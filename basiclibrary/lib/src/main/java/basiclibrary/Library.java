@@ -3,8 +3,7 @@
  */
 package basiclibrary;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 public class Library {
     public int[] roll(int n) {
@@ -20,11 +19,11 @@ public class Library {
         for (int i = 0; i < array.length; i++){
             for (int j = i+1; j < array.length; j++) {
                 if (array[i] == (array[j])) {
-                    return false;
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     public double average(int[] array) {
@@ -37,7 +36,7 @@ public class Library {
     }
 
     public int[] arrayOfArrays(int[][] array) {
-        double lowestAvg = 99999;
+        double lowestAvg = Double.POSITIVE_INFINITY;
         int[] lowestArray = array[0];
         for (int i = 0; i < array.length; i++) {
             double totalSum = 0;
@@ -51,5 +50,83 @@ public class Library {
             }
         }
         return lowestArray;
+    }
+
+    public int BinarySearch(int[] array, int targetValue) {
+        int left = 0;
+        int right = array.length - 1;
+        while (left <= right) {
+            int middle = (left + right)/2;
+            if (array[middle] < targetValue) {
+                left = middle + 1;
+                System.out.println("left = " + left);
+            } else if (array[middle] > targetValue) {
+                right = middle - 1;
+                System.out.println("right = " + right);
+            } else {
+                System.out.println(targetValue + " is located at index " + middle);
+                return middle;
+            }
+        }
+        System.out.println("-1 = Value not found");
+        return -1;
+    }
+
+    public void analyzingWeatherData(int[][] array) {
+        Integer lowestTemp = Integer.MAX_VALUE;
+        Integer highestTemp = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] < lowestTemp) {
+                    lowestTemp = array[i][j];
+                }
+                if (array[i][j] > highestTemp) {
+                    highestTemp = array[i][j];
+                }
+            }
+        }
+        System.out.println("High: " + highestTemp);
+        System.out.println("Low: " + lowestTemp);
+
+        for (int n = lowestTemp; n < highestTemp; n++) {
+
+//            if (Arrays.asList(array).contains(n) == false) {
+//                System.out.println("Never saw temperature: " + n);
+//            }
+
+            boolean found = false;
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[i].length; j++) {
+                    if (n == array[i][j]) {
+                        found = true;
+                    }
+                }
+            }
+            if (found == false) {
+                System.out.println("Never saw temperature: " + n);
+            }
+        }
+    }
+    public String tally(List<String> votes) {
+        Integer bushVotes = 0;
+        Integer hedgeVotes = 0;
+        Integer shrubVotes = 0;
+
+        for (int i = 0; i <votes.size(); i++) {
+            if (votes.get(i).equals("Bush")) {
+                bushVotes++;
+            } else if (votes.get(i).equals("Hedge")) {
+                hedgeVotes++;
+            } else {
+                shrubVotes++;
+            }
+        }
+        if (bushVotes > hedgeVotes && bushVotes > shrubVotes) {
+            return (String) "Bush";
+        } else if (hedgeVotes > bushVotes && hedgeVotes > shrubVotes) {
+            return (String) "Hedge";
+        } else {
+            return (String) "Shrub";
+        }
     }
 }
