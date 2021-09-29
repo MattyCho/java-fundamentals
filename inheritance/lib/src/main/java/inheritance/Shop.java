@@ -3,18 +3,18 @@ package inheritance;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant {
-
+public class Shop {
     String name;
-    float stars;
+    String description;
     int price;
+    float stars;
     List<Review> reviews = new ArrayList<>();
     float totalStars;
     float numReviews;
 
-    public Restaurant (String name, int stars, int price) {
+    public Shop(String name, String description, int price) {
         this.name = name;
-        this.stars = stars;
+        this.description = description;
         this.price = price;
     }
 
@@ -22,11 +22,8 @@ public class Restaurant {
     public String toString() {
         String output = "";
         output += "Name: " + this.name + "\n";
-        if (this.stars == 1) {
-            output += "Rating: " + this.stars + " Star\n";
-        } else {
-            output += "Rating: " + this.stars + " Stars\n";
-        }
+        output += "Description: " + this.description + "\n";
+        output += "Rating: " + this.stars + "\n";
         String dollarSign = "$";
         String price = dollarSign.repeat(this.price);
         output += "Price: " + price + "\n";
@@ -34,7 +31,7 @@ public class Restaurant {
     }
 
     public void addReview(Review review) {
-        if (review.restaurant.name == this.name){
+        if (review.shop.name == this.name){
             reviews.add(review);
             numReviews++;
             totalStars += review.stars;

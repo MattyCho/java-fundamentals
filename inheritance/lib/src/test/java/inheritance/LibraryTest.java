@@ -33,3 +33,51 @@ class RestaurantTest {
         System.out.println(McDonalds.toString());
     }
 }
+
+class ShopTest {
+    Shop testShop = new Shop("Test Shop Name", "This is a fake shop", 3);
+    Review newReview = new Review("Body", "Matt C.", 5, testShop);
+    Review secondReview = new Review("Description goes here", "Nikola T.", 0, testShop);
+
+    @Test void shopReviewTest() {
+        System.out.println(testShop.toString());
+        testShop.addReview(newReview);
+        testShop.addReview(secondReview);
+        System.out.println(testShop.toString());
+        System.out.println(testShop.reviews);
+    }
+}
+
+class TheaterTest {
+    Theater regalTheater = new Theater("Regal");
+    Theater amcTheater = new Theater("AMC");
+    Review firstReview = new Review("Theater body goes here", "Matt C.", 5, regalTheater, "Blade Runner");
+    Review secondReview = new Review("testing testing testing", "Bill G.", 3, regalTheater);
+
+    @Test void MovieReviewTest() {
+        System.out.println(regalTheater.toString());
+        regalTheater.addReview(firstReview);
+        regalTheater.addReview(secondReview);
+        System.out.println(regalTheater.reviews);
+        System.out.println(regalTheater.toString());
+    }
+
+    @Test void addingMovieTest() {
+        System.out.println(regalTheater.movies);
+        regalTheater.addMovie("Titanic");
+        regalTheater.addMovie("Lord of the Rings");
+        System.out.println(regalTheater.movies);
+    }
+
+    @Test void removingMovieTest() {
+        System.out.println(regalTheater.movies);
+        regalTheater.addMovie("Titanic");
+        regalTheater.addMovie("Lord of the Rings");
+        regalTheater.addMovie("Harry Potter");
+        regalTheater.addMovie("Princess Mononoke");
+        regalTheater.addMovie("Avengers");
+        regalTheater.addMovie("Blade Runner");
+        regalTheater.removeMovie("Titanic");
+        System.out.println(regalTheater.toString());
+    }
+}

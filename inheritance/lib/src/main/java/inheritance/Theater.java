@@ -3,38 +3,38 @@ package inheritance;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant {
-
+public class Theater {
     String name;
-    float stars;
-    int price;
     List<Review> reviews = new ArrayList<>();
+    List<String> movies = new ArrayList<>();
+    float stars;
     float totalStars;
     float numReviews;
 
-    public Restaurant (String name, int stars, int price) {
+
+    public Theater(String name) {
         this.name = name;
-        this.stars = stars;
-        this.price = price;
     }
 
     @Override
     public String toString() {
         String output = "";
         output += "Name: " + this.name + "\n";
-        if (this.stars == 1) {
-            output += "Rating: " + this.stars + " Star\n";
-        } else {
-            output += "Rating: " + this.stars + " Stars\n";
-        }
-        String dollarSign = "$";
-        String price = dollarSign.repeat(this.price);
-        output += "Price: " + price + "\n";
+        output += "Rating: " + this.stars + "\n";
+        output += "Movies currently airing: " + this.movies + "\n";
         return output;
     }
 
+    public void addMovie(String movieName) {
+        movies.add(movieName);
+    }
+
+    public void removeMovie(String movieName) {
+        movies.remove(movieName);
+    }
+
     public void addReview(Review review) {
-        if (review.restaurant.name == this.name){
+        if (review.theater.name == this.name){
             reviews.add(review);
             numReviews++;
             totalStars += review.stars;
