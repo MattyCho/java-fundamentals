@@ -13,3 +13,9 @@
 - average takes an array of integers and calculates the total average of every value in the array.
 - arrayOfArrays takes and array of arrays and returns the single array with the lowest average value.
 - lib/src/test//java/LibraryTest.Java contains test values for each method in Library.java.
+
+## Lab 3 - basiclibrary
+- added 3 more methods: binarysearch, analyzingweatherdata, tally.
+- binarysearch, uses the binary search algorithm to look through an array for a target value and returns the index of that value. If that value doesn't exist in the array it will return -1.
+- analyzingweatherdata uses a 2D array and will return the highest and lowest temperature as well as every temperature in between that did not appear in the array.
+- tally takes a list and returns the element that appeared the most.

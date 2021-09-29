@@ -5,7 +5,9 @@ package basiclibrary;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +22,7 @@ class LibraryTest {
         // test for duplicates method
         int[] testArray = new int[]{1,2,3,4,5,6,7,8,9,10,2};
         boolean duplicates = cut.containsDuplicate(testArray);
-        System.out.println("The array is free of duplicates: " + duplicates);
+        System.out.println("The array contains duplicates: " + duplicates);
 
         //test for averages method
         double totalAverages = cut.average(testArray);
@@ -35,5 +37,24 @@ class LibraryTest {
         };
         int[] lowestAvg = cut.arrayOfArrays(weeklyMonthTemperatures);
         System.out.println(Arrays.toString(lowestAvg));
+
+        // test for analyzing weather data
+        cut.analyzingWeatherData(weeklyMonthTemperatures);
+
+        cut.BinarySearch(testArray, 10);
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String winner = cut.tally(votes);
+        System.out.println(winner + " received the most votes!");
     }
 }
